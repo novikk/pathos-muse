@@ -1,7 +1,8 @@
 package main
 
 import (
-	"sync"
+	"fmt"
+	"net/http"
 
 	"github.com/hypebeast/go-osc/osc"
 )
@@ -10,16 +11,30 @@ func main() {
 	addr := "127.0.0.1:5000"
 	server := &osc.Server{Addr: addr}
 
-	server.Handle("/muse/eeg", func(msg *osc.Message) {
-		osc.PrintMessage(msg)
+	server.Handle("/muse/elements/experimental/mellow", func(msg *osc.Message) {
+		//fmt.Println(msg)
+
+		total := float32(0)
+		for i := range msg.Arguments {
+			total += msg.Arguments[i].(float32)
+		}
+
+		wsBroadcast(MuseWaveData{
+			Wave:  "EEG",
+			Value: total / float32(len(msg.Arguments)),
+		})
+
+		fmt.Println("Value:", total/float32(len(msg.Arguments)))
 	})
 
-	wg := &sync.WaitGroup{}
+	server.Handle("/muse/elements/horseshoe", func(msg *osc.Message) {
+		fmt.Println("Status:", msg.Arguments)
+	})
+
 	go func() {
-		wg.Add(1)
-		server.ListenAndServe()
-		wg.Done()
+		fmt.Println(server.ListenAndServe())
 	}()
 
-	wg.Wait()
+	http.HandleFunc("/ws", wsHandler)
+	http.ListenAndServe(":8080", nil)
 }
