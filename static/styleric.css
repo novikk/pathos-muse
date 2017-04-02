@@ -1,0 +1,41 @@
+
+#frsensor:before {
+    content: "\25cf";
+    font-size: 1.5em;
+    color: green;
+}
+
+#flsensor:before {
+    content: "\25cf";
+    font-size: 1.5em;
+    color: green;
+}
+
+#brsensor:before {
+    content: "\25cf";
+    font-size: 1.5em;
+    color: red;
+}
+
+#blsensor:before {
+    content: "\25cf";
+    font-size: 1.5em;
+    color: yellow;
+}
+
+.page-header {
+    margin-top: 25px;
+}
+
+#anger {
+    font-weight: bold;
+}
+
+#face {
+    font-size: 170%;
+    text-align: center;
+}
+
+#patientStatusImg {
+    max-width: 50%;
+}

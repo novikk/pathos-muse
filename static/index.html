@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pathos.tech</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <!--<link href="morrisjs/morris.css" rel="stylesheet">-->
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="styleric.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/epoch.min.css">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="logo.jpeg" style="height: 30px; margin-top: -5px" alt=""></a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> Raymond Babbitt
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#">Raymond Babbitt</a>
+                        </li>
+                        <li><a href="#">Alan Turing</a>
+                        </li>
+                        <li><a href="#">Sally Matthews</a>
+                        </li>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-patients -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-gear fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Therapist profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-wrench fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                       
+                        
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Live training</a>
+                        </li>
+                         <li>
+                            <a href="analytics.html"><i class="fa fa-bar-chart-o fa-fw"></i> Sessions analytics</a>
+                        </li>
+                            
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        
+
+
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Live training</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+
+
+
+            <div class="row">
+            <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-check fa-fw"></i> Sensor Status
+                            <div class="pull-right">
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="col-lg-3 col-md-6">
+                                <span class="glyphicon glyphicon-one-fine-dot" id="frsensor"></span> FR
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <span class="glyphicon glyphicon-one-fine-dot" id="flsensor"></span><span> FL</span>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <span class="glyphicon glyphicon-one-fine-dot" id="brsensor"></span><span> BR</span>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <span class="glyphicon glyphicon-one-fine-dot" id="blsensor"></span><span> BL</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-heart fa-fw"></i> Facial self-expression
+                            <div class="pull-right">
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="col-lg-2" id="anger" style="font-weight: normal">
+                                <span id="angerlvl">43</span><span>% Anger</span>
+                            </div>
+                            <div class="col-lg-2" id="disgust">
+                                <span id="disgustlvl">5</span><span>% Disgust</span>
+                            </div>
+                            <div class="col-lg-2" id="fear">
+                                <span id="fearlvl">0</span><span>% Fear</span>
+                            </div>
+                            <div class="col-lg-2" id="joy">
+                                <span id="joylvl">0</span><span>% Joy</span>
+                            </div>
+                            <div class="col-lg-2" id="sad">
+                                <span id="sadlvl">14</span><span>% Sad</span>
+                            </div>
+                            <div class="col-lg-2">
+                                <span id="surpriselvl">0</span><span>% Suprise</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+       
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Brain Waves Live Activity
+                            <div class="pull-right">
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                                <div id="waveChart" class="epoch category10" style="width: 600px; height: 200px"></div>
+                            <div><br>
+                              
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">      
+                                <div class="col text-center">
+                                    <div class="huge" id="alphaNum">26</div>
+                                    <div>Alpha (log dB)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">      
+                                <div class="col text-center">
+                                    <div class="huge" id="betaNum">43</div>
+                                    <div>Beta (log dB)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">      
+                                <div class="col text-center">
+                                    <div class="huge" id="gammaNum">124</div>
+                                    <div>Gamma (log dB)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">      
+                                <div class="col text-center">
+                                    <div class="huge" id="thetaNum">93</div>
+                                    <div>Theta (log dB)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+            
+                
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+                
+                
+                <div class="col-lg-4">                      
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Mellow Level
+                        </div>
+                        <div class="panel-body">
+                            <div id="mellowChart" class="epoch gauge-medium" style="margin: 0 auto"></div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>                             
+                </div>
+                <!-- /.col-lg-4 -->
+                <div class="col-lg-4" style="float: right">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-exchange fa-fw"></i> Patient's Feedback'
+                        </div>
+                        <div class="panel-body">
+                            <div id="face">
+                                <span id="patientStatus">Sad</span>
+                                <img src="faces/sad.png" id="patientStatusImg">
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>                             
+                </div>
+                    
+                
+
+                </div>
+
+            
+             
+            </div>
+
+               
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery-2.2.4.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <!--<script src="raphael/raphael.min.js"></script>
+    <script src="morrisjs/morris.min.js"></script>
+    <script src="morrisjs/morris-data.js"></script>-->
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/sb-admin-2.js"></script>
+
+    <script src="js/d3.min.js"></script>
+    <script src="js/epoch.min.js"></script>
+
+     <script type="text/javascript">
+        $(function () {
+            mellowChart = $('#mellowChart').epoch({
+                 type: 'time.gauge',
+                 value: 0.5
+            });
+
+            alphaVals = []
+            betaVals = []
+            gammaVals = []
+            thetaVals = []
+
+            function getData() {
+                return [
+                    {
+                        label: "Alpha",
+                        values: alphaVals,
+                        range: 'range-waves'
+                    },
+
+                    {
+                        label: "Beta",
+                        values: betaVals,
+                        range: 'range-waves'
+                    },
+
+                    {
+                        label: "Gamma",
+                        values: gammaVals,
+                        range: 'range-waves'
+                    },
+
+                    {
+                        label: "Delta",
+                        values: thetaVals,
+                        range: 'range-waves'
+                    }
+                ];
+            }
+            
+            waveChart = $('#waveChart').epoch({
+                type: 'time.line',
+                data: getData(),
+                axes: [''],
+                range: {
+                    left: 'range-waves'
+                },
+            });
+
+            var ws;
+            if (window.WebSocket === undefined) {
+                //$("#container").append("Your browser does not support WebSockets");
+                return;
+            } else {
+                ws = initWS();
+            }
+            function initWS() {
+                var socket = new WebSocket("ws://localhost:8080/ws")//,
+                    //ontainer = $("#container")
+
+                socket.onopen = function() {
+                    //container.append("<p>Socket is open</p>");
+                };
+                socket.onmessage = function (e) {
+                    //container.append("<p>" + e.data + "</p>");
+                    // console.log(e.data)
+                    dt = JSON.parse(e.data)
+                    if (dt.Wave == "Mellow") {
+                        mellowChart.push(dt.Value)
+                    } else if (dt.Wave == "Alpha") {
+                        alphaVals.push({time: +new Date(), y: dt.Value})
+                        if (alphaVals.length > 200) {
+                            alphaVals.unshift()
+                        }
+                        $('#alphaNum').html(Math.round(dt.Value * 100) / 100)
+                        waveChart.update(getData())
+                    } else if (dt.Wave == "Beta") {
+                        betaVals.push({time: +new Date(), y: dt.Value})
+                        if (betaVals.length > 200) {
+                            betaVals.unshift()
+                        }
+                        $('#betaNum').html(Math.round(dt.Value * 100) / 100)
+                        waveChart.update(getData())
+                    } else if (dt.Wave == "Gamma") {
+                        gammaVals.push({time: +new Date(), y: dt.Value})
+                        if (gammaVals.length > 200) {
+                            gammaVals.unshift()
+                        }
+                        $('#gammaNum').html(Math.round(dt.Value * 100) / 100)
+                        waveChart.update(getData())
+                    } else if (dt.Wave == "Theta") {
+                        thetaVals.push({time: +new Date(), y: dt.Value})
+                        if (thetaVals.length > 200) {
+                            thetaVals.unshift()
+                        }
+                        $('#thetaNum').html(Math.round(dt.Value * 100) / 100)
+                        waveChart.update(getData())
+                    }
+                }
+                socket.onclose = function () {
+                    //container.append("<p>Socket closed</p>");
+                }
+                return socket;
+            }
+        });
+
+        function getColor(n) {
+            if (n == 1) return "green";
+            if (n == 2) return "yellow";
+            return "red";
+        }
+
+        setInterval(function(){
+            $.get("/getSensorStatus", function(data) {
+                data = data.replace("[","").replace("]","").split(" ")
+
+                $("#frsensor").append('<style>#frsensor:before{color: '+getColor(data[2])+'}</style>');
+                $("#flsensor").append('<style>#flsensor:before{color: '+getColor(data[1])+'}</style>');
+                $("#blsensor").append('<style>#blsensor:before{color: '+getColor(data[0])+'}</style>');
+                $("#brsensor").append('<style>#brsensor:before{color: '+getColor(data[3])+'}</style>');
+            })
+        }, 1000)
+
+        function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+
+        setInterval(function() {
+            $.get( "http://pathos.scalingo.io/getPatientStatus", function( data ) {
+                $( "#patientStatus" ).html(capitalizeFirstLetter(data));
+                $( "#patientStatusImg" ).attr('src', '/faces/' + data+'.png');
+            })
+        }, 1000);
+
+        setInterval(function() {
+            $.get( "http://pathos.scalingo.io/getDoctorStatusAll", function( data ) {
+                data = data.replace("[","").replace("]","").split(" ")
+
+                $( "#angerlvl" ).html(parseInt(data[1] * 100));
+                $( "#joylvl" ).html(parseInt(data[0] * 100));
+                $( "#sadlvl" ).html(parseInt(data[3] * 100));
+                $( "#fearlvl" ).html(parseInt(data[2] * 100));
+                $( "#disgustlvl" ).html(parseInt(data[5] * 100));
+                $( "#surpriselvl" ).html(parseInt(data[4] * 100));
+            })
+        }, 1000);
+    </script>
+
+</body>
+
+</html>

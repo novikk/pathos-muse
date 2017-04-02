@@ -1,0 +1,111 @@
+<html>
+<head>
+    <title>Pathos test 1</title>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/epoch.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/epoch.min.css">
+</head>
+<body class="epoch-theme-default">
+    <div id="container"></div>
+    <div id="stressChart" class="epoch gauge-small"></div>
+    <div id="waveChart" class="epoch category10" style="width: 800px; height: 200px"></div>
+
+    <span style="color: #1f77b4">Alpha</span>
+    <span style="color: #ff7f0e">Beta</span>
+    <span style="color: #2ca02c">Gamma</span>
+    <span style="color: #d62728">Theta</span>
+
+    <script type="text/javascript">
+        $(function () {
+            stressChart = $('#stressChart').epoch({
+                type: 'time.gauge',
+                value: 0.5
+            });
+
+            alphaVals = []
+            betaVals = []
+            gammaVals = []
+            thetaVals = []
+
+            function getData() {
+                return [
+                    {
+                        label: "Alpha",
+                        values: alphaVals,
+                        range: 'range-waves'
+                    },
+
+                    {
+                        label: "Beta",
+                        values: betaVals,
+                        range: 'range-waves'
+                    },
+
+                    {
+                        label: "Gamma",
+                        values: gammaVals,
+                        range: 'range-waves'
+                    },
+
+                    {
+                        label: "Delta",
+                        values: thetaVals,
+                        range: 'range-waves'
+                    }
+                ];
+            }
+            
+            waveChart = $('#waveChart').epoch({
+                type: 'time.line',
+                data: getData(),
+                axes: ['left'],
+                range: {
+                    left: 'range-waves'
+                },
+            });
+
+            var ws;
+            if (window.WebSocket === undefined) {
+                $("#container").append("Your browser does not support WebSockets");
+                return;
+            } else {
+                ws = initWS();
+            }
+            function initWS() {
+                var socket = new WebSocket("ws://localhost:8080/ws"),
+                    container = $("#container")
+
+                socket.onopen = function() {
+                    container.append("<p>Socket is open</p>");
+                };
+                socket.onmessage = function (e) {
+                    //container.append("<p>" + e.data + "</p>");
+                    // console.log(e.data)
+                    dt = JSON.parse(e.data)
+                    if (dt.Wave == "Stress") {
+                        stressChart.push(1 - dt.Value)
+                    } else if (dt.Wave == "Alpha") {
+                        alphaVals.push({time: +new Date(), y: dt.Value})
+                        waveChart.update(getData())
+                    } else if (dt.Wave == "Beta") {
+                        betaVals.push({time: +new Date(), y: dt.Value})
+                        waveChart.update(getData())
+                    } else if (dt.Wave == "Gamma") {
+                        gammaVals.push({time: +new Date(), y: dt.Value})
+                        waveChart.update(getData())
+                    } else if (dt.Wave == "Theta") {
+                        thetaVals.push({time: +new Date(), y: dt.Value})
+                        waveChart.update(getData())
+                    }
+                }
+                socket.onclose = function () {
+                    container.append("<p>Socket closed</p>");
+                }
+                return socket;
+            }
+        });
+    </script>
+</body>
+</html>

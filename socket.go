@@ -41,7 +41,7 @@ func wsBroadcast(data MuseWaveData) {
 
 	mx.Lock()
 	for c := range connections {
-		connections[c].WriteJSON(dataJson)
+		connections[c].WriteMessage(1, dataJson)
 	}
 	mx.Unlock()
 }
